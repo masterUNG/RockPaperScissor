@@ -15,6 +15,7 @@ public class PlayGameActivity extends AppCompatActivity {
     private TextView scoreTextView;
     private ImageView userImageView, androidImageView;
     private int userChooseAnInt, androidAnInt, userAnInt, scoreAnInt = 0;
+    private ManageTABLE objManageTABLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,8 @@ public class PlayGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play_game);
 
         bindWidget();
+
+        objManageTABLE = new ManageTABLE(this);
 
     }   // onCreate
 
