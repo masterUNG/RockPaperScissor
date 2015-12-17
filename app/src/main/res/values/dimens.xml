@@ -5,7 +5,7 @@
 
     <dimen name="image1">250dp</dimen>
     <dimen name="image2">150dp</dimen>
-    <dimen name="h1">35sp</dimen>
+    <dimen name="h1">60sp</dimen>
     <dimen name="h2">25sp</dimen>
 
 
