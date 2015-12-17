@@ -14,7 +14,7 @@ public class PlayGameActivity extends AppCompatActivity {
     //Explicit
     private TextView scoreTextView;
     private ImageView userImageView, androidImageView;
-    private int userChooseAnInt, androidAnInt, userAnInt;
+    private int userChooseAnInt, androidAnInt, userAnInt, scoreAnInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class PlayGameActivity extends AppCompatActivity {
         changeUserImage();
         changeAndroidImage();
 
+
     }
 
     private void changeAndroidImage() {
@@ -40,7 +41,57 @@ public class PlayGameActivity extends AppCompatActivity {
         androidAnInt = objRandom.nextInt(3) + 1;
         Log.d("game", "myRandom ==> " + Integer.toString(androidAnInt));
         androidImageView.setImageResource(findImage(androidAnInt));
+        scoreAnInt = findScore(userAnInt, androidAnInt);
+        scoreTextView.setText("Score = " + Integer.toString(scoreAnInt));
 
+    }
+
+    private int findScore(int userAnInt, int androidAnInt) {
+
+        int intResult = 0;
+
+        if (userAnInt == 1) {
+            // User == Rock
+            switch (androidAnInt) {
+                case 3:
+                    intResult++;
+                    break;
+                case 2:
+                    intResult--;
+                    break;
+                default:
+                    break;
+            }
+
+        } else if (userAnInt == 2) {
+            // User == Paper
+            switch (androidAnInt) {
+                case 1:
+                    intResult++;
+                    break;
+                case 3:
+                    intResult--;
+                    break;
+                default:
+                    break;
+            }
+
+        } else {
+            // User == Scisoer
+            switch (androidAnInt) {
+                case 2:
+                    intResult++;
+                    break;
+                case 1:
+                    intResult--;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        return intResult;
     }
 
     private int findImage(int androidAnInt) {
