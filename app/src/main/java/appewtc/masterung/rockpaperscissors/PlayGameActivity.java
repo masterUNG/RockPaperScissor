@@ -41,7 +41,7 @@ public class PlayGameActivity extends AppCompatActivity {
         androidAnInt = objRandom.nextInt(3) + 1;
         Log.d("game", "myRandom ==> " + Integer.toString(androidAnInt));
         androidImageView.setImageResource(findImage(androidAnInt));
-        scoreAnInt = findScore(userAnInt, androidAnInt);
+        scoreAnInt = scoreAnInt + findScore(userAnInt, androidAnInt);
         scoreTextView.setText("Score = " + Integer.toString(scoreAnInt));
 
     }
@@ -50,49 +50,33 @@ public class PlayGameActivity extends AppCompatActivity {
 
         int intResult = 0;
 
-        if (userAnInt == 1) {
-            // User == Rock
-            switch (androidAnInt) {
-                case 3:
-                    intResult++;
-                    break;
-                case 2:
-                    intResult--;
-                    break;
-                default:
-                    break;
-            }
+        switch (userAnInt) {
+            case 1:
+                if (androidAnInt == 2) {
+                    intResult = -1;
+                } else if (androidAnInt == 3) {
+                    intResult = 1;
+                }
 
-        } else if (userAnInt == 2) {
-            // User == Paper
-            switch (androidAnInt) {
-                case 1:
-                    intResult++;
-                    break;
-                case 3:
-                    intResult--;
-                    break;
-                default:
-                    break;
-            }
-
-        } else {
-            // User == Scisoer
-            switch (androidAnInt) {
-                case 2:
-                    intResult++;
-                    break;
-                case 1:
-                    intResult--;
-                    break;
-                default:
-                    break;
-            }
-
+                break;
+            case 2:
+                if (androidAnInt == 1) {
+                    intResult = 1;
+                } else if (androidAnInt == 3) {
+                    intResult = -1;
+                }
+                break;
+            case 3:
+                if (androidAnInt == 1) {
+                    intResult = -1;
+                } else if (androidAnInt == 2) {
+                    intResult = 1;
+                }
+                break;
         }
 
         return intResult;
-    }
+    }   // findScore
 
     private int findImage(int androidAnInt) {
 
