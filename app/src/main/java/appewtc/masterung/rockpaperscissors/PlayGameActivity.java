@@ -1,5 +1,6 @@
 package appewtc.masterung.rockpaperscissors;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,14 @@ public class PlayGameActivity extends AppCompatActivity {
         objManageTABLE = new ManageTABLE(this);
 
     }   // onCreate
+
+    public void clickSave(View view) {
+
+        String strDate = getIntent().getStringExtra("Date");
+        objManageTABLE.addValueToSQLite(strDate, Integer.toString(scoreAnInt));
+        startActivity(new Intent(PlayGameActivity.this, ScoreListView.class));
+
+    }
 
     public void clickRock(View view) {
 
