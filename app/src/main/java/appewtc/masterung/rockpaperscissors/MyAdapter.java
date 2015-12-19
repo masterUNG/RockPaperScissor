@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 /**
  * Created by masterUNG on 12/18/15 AD.
@@ -42,8 +43,12 @@ public class MyAdapter extends BaseAdapter{
         LayoutInflater objLayoutInflater = (LayoutInflater) objContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View objView1 = objLayoutInflater.inflate(R.layout.score_listview, viewGroup, false);
 
+        TextView dateTextView = (TextView) objView1.findViewById(R.id.textView4);
+        dateTextView.setText(dateStrings[i]);
 
+        TextView scoreTextView = (TextView) objView1.findViewById(R.id.textView6);
+        scoreTextView.setText(scoreStrings[i]);
 
-        return null;
+        return objView1;
     }
 }   // Main Class
